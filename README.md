@@ -28,7 +28,7 @@ It does require you to run your project from a git repository though.
 ```js
 Template.Footer.helpers({
 	revision: function () {
-		return Revision.short()
+		return Revision.revision()
 	}
 })
 
@@ -65,7 +65,7 @@ Revision.short() // => b3b03e4
 ### Current commit (long)
 
 ```js
-Revision.short() // => b3b03e41e13ced023e1fd2cb330db1053e6ff649
+Revision.revision() // => b3b03e41e13ced023e1fd2cb330db1053e6ff649
 ```
 
 ### id

@@ -1,4 +1,6 @@
 /**
- * Trigger File
+ * The compiler will leave this file as is if it connat detect a git repository.
  */
-console.warn("If you are reading this message, the compiler didnt work for centiq:revision");
+if(Meteor.isServer) {
+	console.warn("Using centiq:revision but cannot detect a .git repository.");
+}

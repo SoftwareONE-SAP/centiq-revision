@@ -2,13 +2,21 @@
  * 
  */
 class RevisionClass {
+	/**
+	 * Check to see if a proeprty exists and return it.
+	 * @param  {String} key index of _META_ object 
+	 * @return {String} value
+	 */
+	_get(key) {
+		return (key in _META_ ? _META_[key] : undefined);
+	}
 
 	/**
 	 * Return the current revision in a short form
 	 * @return {String}
 	 */
 	id() {
-		return __GIT__['id'];
+		return this._get('id')
 	}
 
 	/**
@@ -16,15 +24,15 @@ class RevisionClass {
 	 * @return {String}
 	 */
 	short() {
-		return __GIT__['short'];
+		return this._get('short')
 	}
 
 	/**
 	 * Return the current revision hash
 	 * @return {String}
 	 */
-	long() {
-		return __GIT__['long'];
+	revision () {
+		return this._get('revision');
 	}
 
 	/**
@@ -32,7 +40,7 @@ class RevisionClass {
 	 * @return {String}
 	 */
 	branch() {
-		return __GIT__['branch'];
+		return this._get('branch');
 	}
 
 	/**
@@ -40,7 +48,7 @@ class RevisionClass {
 	 * @return {String}
 	 */
 	tag() {
-		return __GIT__['tag'];
+		return this._get('tag')
 	}
 }
 
