@@ -1,7 +1,7 @@
 /**
  * Require Dependancies
  */
-var exec = Npm.require('execsyncs');
+var exec = Npm.require('sync-exec');
 
 /**
  * Revision Compiler
@@ -22,7 +22,7 @@ class GitRevisionCompiler {
 		 * Fetch the current head commit
 		 * @type {String}
 		 */
-		let HEAD = metadata.revision = exec('git rev-parse HEAD').replace('\n', '');
+		let HEAD = metadata.revision = exec('git rev-parse HEAD').stdout.replace('\n', '');
 
 		/**
 		 * When you execute the above command in a none git based structure
@@ -36,7 +36,7 @@ class GitRevisionCompiler {
 			/**
 			 * Set the short commit id
 			 *
-			 * see the --short option at the link below. 
+			 * see the --short option at the link below.
 			 * @see https://www.kernel.org/pub/software/scm/git/docs/git-rev-parse.html
 			 */
 			metadata.short = HEAD.substring(0, 7);
@@ -44,12 +44,12 @@ class GitRevisionCompiler {
 			/**
 			 * Fetch the current branch name
 			 */
-			metadata.branch = exec('git rev-parse --abbrev-ref HEAD').replace('\n', '');
+			metadata.branch = exec('git rev-parse --abbrev-ref HEAD').stdout.replace('\n', '');
 
 			/**
 			 * Fetch the last known tag for this branch
 			 */
-			metadata.tag = exec('git describe --tags --always --abbrev=0 HEAD').replace('\n', '');
+			metadata.tag = exec('git describe --tags --always --abbrev=0 HEAD').stdout.replace('\n', '');
 
 			/**
 			 * Fetch the tag identifier
@@ -57,7 +57,7 @@ class GitRevisionCompiler {
 			 * This is mearly TAG-N-<short> where N is the numbe of commits on the branch
 			 * since the last tag n the current HEAD.
 			 */
-			metadata.id = exec('git describe --tags --always --abbrev=1 HEAD').replace('\n', '')
+			metadata.id = exec('git describe --tags --always --abbrev=1 HEAD').stdout.replace('\n', '')
 
 			/**
 			 * Compile the source code into something that we can execute during runtime.

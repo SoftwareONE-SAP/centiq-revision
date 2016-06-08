@@ -1,6 +1,6 @@
 Package.describe({
-  name: 'centiq:revision',
-  version: '1.1.0',
+  name: 'centiq-revision',
+  version: '1.2.0',
   // Brief, one-line summary of the package.
   summary: 'Get the current git revision information and expose it to the application.',
   // URL to the Git repository containing the source code for this package.
@@ -11,10 +11,10 @@ Package.describe({
 });
 
 Package.registerBuildPlugin({
-  name:             'centiq:revision',
+  name:             'centiq-revision',
   use:              ['ecmascript', 'isobuild:compiler-plugin@1.0.0'],
   sources:          ['plugins/revision.js'],
-  npmDependencies:  {'execsyncs': '0.1.1'}
+  npmDependencies:  {'sync-exec': '0.6.2'}
 });
 
 /**
